@@ -1,0 +1,12 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    artii (2.0.3)
+    cinch (2.0.7)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  artii
+  cinch
