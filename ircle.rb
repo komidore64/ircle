@@ -1,5 +1,11 @@
+# cinch irc bot api
 require 'cinch'
-require 'artii'
+
+# ircle
+require './ircle/help'
+
+# plugins
+require './plugins/ircle_figlet/ircle_figlet'
 
 bot = Cinch::Bot.new do
 
@@ -7,21 +13,11 @@ bot = Cinch::Bot.new do
     c.server = "irc.freenode.org"
     c.channels = ["#elon-cs"]
     c.nick = "ircle"
+    c.plugins.plugins << IrcleFiglet
   end
 
-  on :channel, /\A!figlet/ do |m|
-    text = m.message
-    text.slice!(/\A!figlet/)
-    text.strip!
-    debug "text: #{text}"
-
-    font_list = Artii::Base.new.all_fonts.keys
-    font = font_list[rand(font_list.size)]
-
-    m.reply("rendering with: #{font}")
-    figgles = Artii::Base.new(:font => font).asciify(text)
-
-    m.reply(figgles)
+  on :channel, /\A!help/ do |m|
+    m.reply("help stuff goes here")
   end
 
 end
