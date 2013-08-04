@@ -2,12 +2,12 @@ module Ircle
 
   module Help
 
-    def help_name
-      self.class.name
+    def self.help
+      HELP || "help not found for [ #{help_name} ]"
     end
 
-    def help
-      "help not found for [ #{help_name} ]"
+    def self.help_section
+      HELP_SECTION || self.class.name
     end
 
   end
