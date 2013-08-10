@@ -1,8 +1,7 @@
 require 'cinch'
 
-require './ircle/help'
-
-require './plugins/ircle_figlet/ircle_figlet'
+require 'ircle/help'
+require 'ircle/plugins'
 
 require 'yaml'
 
