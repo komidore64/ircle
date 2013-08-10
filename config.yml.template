@@ -1,0 +1,5 @@
+# vim:ft=yaml
+server: "irc.freenode.org"
+channels:
+  - "#channel"
+nick: "ircle"

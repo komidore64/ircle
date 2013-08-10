@@ -1,18 +1,19 @@
-# cinch irc bot api
 require 'cinch'
 
-# ircle
 require './ircle/help'
 
-# plugins
 require './plugins/ircle_figlet/ircle_figlet'
+
+require 'yaml'
+
+ircle_config = YAML.load_file("./config.yml")
 
 bot = Cinch::Bot.new do
 
   configure do |c|
-    c.server = "irc.freenode.org"
-    c.channels = ["#komidore64-testing"]
-    c.nick = "ircle"
+    c.server = (ircle_config["server"] || "irc.freenode.org")
+    c.channels = (ircle_config["channels"] || ["#channel"])
+    c.nick = (ircle_config["nick"] || "ircle")
     c.plugins.plugins << IrcleFiglet
   end
 
