@@ -13,12 +13,13 @@ bot = Cinch::Bot.new do
     c.channels = (ircle_config["channels"] || ["#channel"])
     c.nick = (ircle_config["nick"] || "ircle")
     c.plugins.plugins << IrcleFiglet
+    c.plugins.plugins << Lunchbot
   end
 
   on :channel, /\A!help/ do |m|
     classes = bot.config.plugins.plugins
-    help_arr = classes.inject([]) do |help_arr, klass|
-      help_arr << [ klass::HELP_SECTION, klass::HELP ]
+    help_arr = classes.inject([]) do |arr, klass|
+      arr << [ klass::HELP_SECTION, klass::HELP ]
     end
     help_text = "help:\n"
     help_text << help_arr.collect { |item| "#{item[0]}\n    #{item[1]}" }.join("\n")
