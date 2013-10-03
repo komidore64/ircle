@@ -43,7 +43,7 @@ class Lunchbot
   SELECTED_FILE = "#{SELF_DIR}/selected"
 
   HELP_SECTION = "lunchbot"
-  HELP = "!lunch - figure out where to go to lunch!"
+  HELP = "!lunch - where to go for lunch"
 
   match(/lunch\z/, :method => :decide_restaurant, :react_on => :channel)
   # should there be a re-roll?

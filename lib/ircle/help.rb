@@ -2,12 +2,20 @@ module Ircle
 
   module Help
 
-    def self.help
-      HELP || "help not found for [ #{help_name} ]"
+    module ClassMethods
+
+      def help
+        [self::HELP || "help not found for [ #{help_name} ]"].flatten
+      end
+
+      def help_section
+        self::HELP_SECTION || self.class.name
+      end
+
     end
 
-    def self.help_section
-      HELP_SECTION || self.class.name
+    def self.included(base)
+      base.extend(ClassMethods)
     end
 
   end
