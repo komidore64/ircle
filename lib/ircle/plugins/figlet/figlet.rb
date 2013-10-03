@@ -3,7 +3,7 @@ require 'yaml'
 
 FONTS = YAML.load_file("#{File.dirname(File.expand_path(__FILE__))}/fonts.yml")
 
-class IrcleFiglet
+class Figlet
   include Cinch::Plugin
   include Ircle::Help
 
