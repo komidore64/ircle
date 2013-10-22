@@ -12,6 +12,7 @@ bot = Cinch::Bot.new do
     c.nick = (ircle_config["nick"] || "ircle")
     c.plugins.plugins << Figlet
     c.plugins.plugins << Lunchbot
+    c.plugins.plugins << Stockerbot
   end
 
   on :channel, /\A!help/ do |m|
