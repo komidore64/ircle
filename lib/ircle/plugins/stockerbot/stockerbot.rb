@@ -90,7 +90,7 @@ class Stockerbot
   HELP = "!stock - get a stock quote"
 
   match(/stock (.+)/, :method => :get_quote, :react_on => :channel)
-  match(/stock (.+)/, :method => :get_quote, :react_on => :message)
+  match(/stock (.+)/, :method => :get_quote, :react_on => :private)
 
   def get_quote(message, stock_symbol)
     svc = YahooStockerService.new

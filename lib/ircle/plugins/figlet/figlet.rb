@@ -11,7 +11,7 @@ class Figlet
   HELP = "!figlet <text> - display <text> as ascii art"
 
   match(/figlet .+\z/, :method => :render_figlet, :react_on => :channel)
-  match(/figlet .+\z/, :method => :render_figlet, :react_on => :message)
+  match(/figlet .+\z/, :method => :render_figlet, :react_on => :private)
 
   def render_figlet(m)
     text = m.message
