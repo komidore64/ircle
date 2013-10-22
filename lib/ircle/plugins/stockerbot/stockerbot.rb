@@ -87,7 +87,7 @@ class Stockerbot
   include Ircle::Help
 
   HELP_SECTION = "stockerbot"
-  HELP = "!stock - get a stock quote"
+  HELP = "!stock <ticker> - get a stock quote"
 
   match(/stock (.+)/, :method => :get_quote, :react_on => :channel)
   match(/stock (.+)/, :method => :get_quote, :react_on => :private)
