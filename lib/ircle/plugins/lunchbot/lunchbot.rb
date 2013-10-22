@@ -45,6 +45,8 @@ class Lunchbot
   HELP_SECTION = "lunchbot"
   HELP = "!lunch - where to go for lunch"
 
+  # specifically *not* supporting privmsg here to insist on lunch choices being
+  # made in channel
   match(/lunch\z/, :method => :decide_restaurant, :react_on => :channel)
   # should there be a re-roll?
 
