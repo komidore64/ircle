@@ -8,7 +8,7 @@ bot = Cinch::Bot.new do
 
   configure do |c|
     c.server = (ircle_config["server"] || "irc.freenode.org")
-    c.channels = (ircle_config["channels"] || ["#channel"])
+    c.channels = (ircle_config["channels"] || ["#ircletest"])
     c.nick = (ircle_config["nick"] || "ircle")
     c.plugins.plugins << Figlet
     c.plugins.plugins << Lunchbot
