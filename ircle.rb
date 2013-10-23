@@ -4,12 +4,12 @@ require 'yaml'
 
 ircle_config = YAML.load_file("./config.yml")
 
-bot = Cinch::Bot.new do
+Cinch::Bot.new do
 
   configure do |c|
-    c.server = (ircle_config["server"] || "irc.freenode.org")
-    c.channels = (ircle_config["channels"] || ["#ircletest"])
-    c.nick = (ircle_config["nick"] || "ircle")
+    c.server = ircle_config["server"]
+    c.channels = ircle_config["channels"]
+    c.nick = ircle_config["nick"]
     c.plugins.plugins << Figlet
     c.plugins.plugins << Lunchbot
     c.plugins.plugins << Stockerbot
@@ -30,6 +30,4 @@ bot = Cinch::Bot.new do
     m.reply(help_text)
   end
 
-end
-
-bot.start
+end.start
