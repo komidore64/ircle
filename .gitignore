@@ -4,4 +4,5 @@ config.yml
 figlet.yml
 vendor
 .bundle
-lib/ircle/plugins/lunchbot/selected
+lib/ircle/plugins/lunchbot/lunchspot
+lib/ircle/plugins/lunchbot/beerspot

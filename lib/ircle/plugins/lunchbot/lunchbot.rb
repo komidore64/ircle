@@ -1,6 +1,7 @@
 require 'yaml'
 
 class Lunchbot
+
   class Selection
     FOUR_HOURS_AGO = 14400
 
@@ -36,22 +37,19 @@ class Lunchbot
 
   SELF_DIR = File.dirname(File.expand_path(__FILE__))
 
-  PLACES = YAML.load_file("#{SELF_DIR}/restaurants.yml")
+  RESTAURANTS = YAML.load_file("#{SELF_DIR}/restaurants.yml")
+  BEER = YAML.load_file("#{SELF_DIR}/beer.yml") if File.exists?("#{SELF_DIR}/beer.yml")
 
-  # contains the currently selected lunchspot and time it was selected, e.g.:
-  #   place,time
-  SELECTED_FILE = "#{SELF_DIR}/selected"
+  SELECTED_LUNCHSPOT = "#{SELF_DIR}/lunchspot"
+  SELECTED_BEERSPOT = "#{SELF_DIR}/beerspot"
 
-  HELP_SECTION = "lunchbot"
+  HELP_SECTION = "foodbot"
   HELP = "!lunch - where to go for lunch"
 
-  # specifically *not* supporting privmsg here to insist on lunch choices being
-  # made in channel
   match(/lunch\z/, :method => :decide_restaurant, :react_on => :channel)
-  # should there be a re-roll?
 
   def decide_restaurant(message)
-    selection = Selection.new(*File.read(SELECTED_FILE).split(",")) if File.exists?(SELECTED_FILE)
+    selection = Selection.new(*File.read(SELECTED_LUNCHSPOT).split(",")) if File.exists?(SELECTED_LUNCHSPOT)
     if selection && selection.valid?
       message.reply("lunch is at #{selection.place}; sorry if you don't like it, blame #{selection.user}")
     else
@@ -60,12 +58,9 @@ class Lunchbot
   end
 
   def select(user)
-    place = PLACES.sample
+    place = RESTAURANTS.sample
     selection = Selection.new(place, user)
-    selection.save(SELECTED_FILE)
+    selection.save(SELECTED_LUNCHSPOT)
   end
 
-  def reset_selection(message)
-    File.delete(SELECTED_FILE) if File.exists?(SELECTED_FILE)
-  end
 end
