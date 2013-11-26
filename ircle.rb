@@ -13,6 +13,7 @@ Cinch::Bot.new do
     c.plugins.plugins << Figlet
     c.plugins.plugins << Lunchbot
     c.plugins.plugins << Stockerbot
+    c.plugins.plugins << Googlebot
   end
 
   on :channel, /\A!help/ do |m|
