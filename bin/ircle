@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require 'ircle'
+
+bot = Ircle.get_instance
+
+bot.start

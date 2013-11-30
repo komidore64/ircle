@@ -1,5 +1,4 @@
 require 'cinch'
-require 'ircle'
 require 'yaml'
 
 ircle_config = YAML.load_file("./config.yml")
