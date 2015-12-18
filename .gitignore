@@ -1,7 +1,0 @@
-.ruby-version
-.ruby-gemset
-config.yml
-figlet.yml
-vendor
-.bundle
-lib/ircle/plugins/lunchbot/selected
